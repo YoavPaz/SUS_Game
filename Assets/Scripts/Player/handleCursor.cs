@@ -32,7 +32,11 @@ public class handleCursor : MonoBehaviour
         Vector3 snappedPosition = tilemap.GetCellCenterWorld(cursorPosition);
 
         if (distance <= range) cursorSprite.sprite = validCur;
-        else                   cursorSprite.sprite = inValidCur;
+        else
+        {
+            cursorSprite.sprite = inValidCur;
+            
+        }
         cursor.transform.position = snappedPosition;
     }
 }

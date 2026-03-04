@@ -1,7 +1,10 @@
+using System;
 using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
+    public static PlayerManager instance;
+    
     public Rigidbody2D rb;
     [Header("Movement")]
     public float speed = 5f;
@@ -15,8 +18,16 @@ public class PlayerManager : MonoBehaviour
     private Vector2 moveInput;
     public Animator animator;
 
+    public PlayerSaveData playerSaveData;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
     void Start()
     {
+        playerSaveData = SaveManager.Load();
         rb = GetComponent<Rigidbody2D>();
         //animator = GetComponent<Animator>();
     }
