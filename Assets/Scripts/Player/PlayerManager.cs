@@ -16,6 +16,7 @@ public class PlayerManager : MonoBehaviour
     public KeyCode LeftKey;
 
     private Vector2 moveInput;
+    private bool idleing = true;
     public Animator animator;
 
     public PlayerSaveData playerSaveData;
@@ -59,10 +60,22 @@ public class PlayerManager : MonoBehaviour
 
     void handleAnimations()
     {
-        if (Input.GetKeyDown(UpKey)) animator.SetTrigger("bwd");
-        else if (Input.GetKeyDown(DownKey)) animator.SetTrigger("fwd");
-        else if (Input.GetKeyDown(LeftKey) || Input.GetKeyDown(RightKey)) animator.SetTrigger("side");
-        else if (!(Input.GetKey(UpKey) || Input.GetKey(DownKey) || Input.GetKey(LeftKey) || Input.GetKey(RightKey))) animator.SetTrigger("idle");
+        if (Input.GetKeyDown(UpKey)) {
+            animator.SetTrigger("bwd");
+            idleing = false;
+        }
+        else if (Input.GetKeyDown(DownKey)) {
+            animator.SetTrigger("fwd");
+            idleing = false;
+        }
+        else if (Input.GetKeyDown(LeftKey) || Input.GetKeyDown(RightKey)) {
+            animator.SetTrigger("side");
+            idleing = false;
+        }
+        else if (!(Input.GetKey(UpKey) || Input.GetKey(DownKey) || Input.GetKey(LeftKey) || Input.GetKey(RightKey)) && !idleing) {
+            animator.SetTrigger("idle");
+            idleing = true;
+        }
 
         if (moveInput.x < 0)
             transform.localScale = new Vector3(-1, 1, 1);
