@@ -220,7 +220,8 @@ MonoBehaviour:
   range: 3
   validCur: {fileID: 5718050564907612378, guid: 8e541c01743418745ab6259af59c3f76, type: 3}
   inValidCur: {fileID: 1906165997670643133, guid: ead51f46674ac1d4e83278cd8dffccbc, type: 3}
-  tilemap: {fileID: 999394003}
+  breakingManager: {fileID: 2040962613}
+  tilemap: {fileID: 988113432}
   cursor: {fileID: 2071792198}
 --- !u!1 &487880277
 GameObject:
@@ -519,6 +520,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 677917317}
+  - {fileID: 2040962612}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &677917316
@@ -1132,6 +1134,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2040962611
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2040962612}
+  - component: {fileID: 2040962613}
+  m_Layer: 0
+  m_Name: breaking manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2040962612
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2040962611}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.8769398, y: 0.46893996, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 669139026}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2040962613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2040962611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54e0ae00407c44b43befa6b932f1c605, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  cursor: {fileID: 2071792198}
+  tilemap: {fileID: 988113432}
+  tileOptions:
+  - name: tree
+    oreSprite: {fileID: 21300000, guid: 7c2028657f0301845a08cdb99bbe69a0, type: 3}
+    dropedResorce: wood
+    droppedResorceSprite: {fileID: 4536570729799689407, guid: 05cdf88963af5854c8ac866b7fcd68f0, type: 3}
+    dropAMT: 10
+  - name: rock
+    oreSprite: {fileID: 21300000, guid: 0f075ab3e0f610f4289192b5b6356d37, type: 3}
+    dropedResorce: stone
+    droppedResorceSprite: {fileID: 21300000, guid: 0f075ab3e0f610f4289192b5b6356d37, type: 3}
+    dropAMT: 2
 --- !u!1 &2071792198
 GameObject:
   m_ObjectHideFlags: 0

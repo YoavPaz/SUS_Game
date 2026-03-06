@@ -6,8 +6,10 @@ public class handleCursor : MonoBehaviour
     public int range = 3;
     public Sprite validCur;
     public Sprite inValidCur;
+    public breakingManager breakingManager;
 
     private SpriteRenderer cursorSprite;
+    private bool valid = false;
 
     public Tilemap tilemap;
     public GameObject cursor;
@@ -21,6 +23,8 @@ public class handleCursor : MonoBehaviour
     {
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         cursor.transform.position = new Vector3(mousePosition.x, mousePosition.y, 0);
+
+        if (Input.GetMouseButtonDown(0) && valid) breakingManager.breakCurrantTile();
     }
 
     void LateUpdate()
@@ -30,13 +34,11 @@ public class handleCursor : MonoBehaviour
 
         int distance = Mathf.Abs(cursorPosition.x - playerPosition.x) + Mathf.Abs(cursorPosition.y - playerPosition.y);
         Vector3 snappedPosition = tilemap.GetCellCenterWorld(cursorPosition);
+        if (distance <= range) valid = true;
+        else valid = false;
 
-        if (distance <= range) cursorSprite.sprite = validCur;
-        else
-        {
-            cursorSprite.sprite = inValidCur;
-            
-        }
+        if (valid) cursorSprite.sprite = validCur;
+        else cursorSprite.sprite = inValidCur;
         cursor.transform.position = snappedPosition;
     }
 }
