@@ -17,6 +17,7 @@ public class breakingManager : MonoBehaviour
 {
     public GameObject cursor;
     public Tilemap tilemap;
+    public InventoryManager inventory;
 
     public List<resorecePresets> tileOptions = new List<resorecePresets>();
 

@@ -19,6 +19,8 @@ public class Inventory
 public class InventoryManager : MonoBehaviour
 {
     public static InventoryManager instance;
+    [SerializeField]
+    public Inventory inventory = new Inventory();
 
     private void Awake()
     {
